@@ -1,13 +1,14 @@
 #!/bin/bash
 
-cd src/java
+# cd src/java
+# bash convert.bash 1
+# cd ..
+
+cd src/python
 bash convert.bash 1
 
-cd ../python
-bash convert.bash 1
-
-cd ../java
-bash convert.bash 0
+# cd ../java
+# bash convert.bash 0
 
 cd ../../
 cat ./data/heldout_relations/trainPositive.tsv >> ./data/train1.txt

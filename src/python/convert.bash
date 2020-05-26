@@ -13,23 +13,27 @@ fi
 
 if [ $1 -eq 0 ]
 then
-  echo "deleting converted data"
-  rm -rf ../../data/kb_manual/trainPositive.tsv
-  rm -rf ../../data/kb_manual/trainNegative.tsv
+  read -p "do you want to delete the converted data?" yn
+  case $yn in 
+	  [yY]* ) 
+	  echo "deleting converted data"
+	  rm -rf ../../data/kb_manual/trainPositive.tsv
+	  rm -rf ../../data/kb_manual/trainNegative.tsv
 
-  rm -rf ../../data/heldout_relations/trainPositive.tsv
-  rm -rf ../../data/heldout_relations/trainNegative.tsv
-  rm -rf ../../data/heldout_relations/testPositive.tsv
-  rm -rf ../../data/heldout_relations/testNegative.tsv
+	  rm -rf ../../data/heldout_relations/trainPositive.tsv
+	  rm -rf ../../data/heldout_relations/trainNegative.tsv
+	  rm -rf ../../data/heldout_relations/testPositive.tsv
+	  rm -rf ../../data/heldout_relations/testNegative.tsv
+  esac
 else
   echo "converting data"
   #convert all files
-  convert ../../data/kb_manual/trainPositive/ ../../data/filtered-freebase-simple-topic-dump-3cols.tsv 
-  convert ../../data/kb_manual/trainNegative/ ../../data/filtered-freebase-simple-topic-dump-3cols.tsv
+  convert ../../data/kb_manual/trainPositive.pb ../../data/filtered-freebase-simple-topic-dump-3cols.tsv 
+  convert ../../data/kb_manual/trainNegative.pb ../../data/filtered-freebase-simple-topic-dump-3cols.tsv
 
-  convert ../../data/heldout_relations/trainPositive/ ../../data/filtered-freebase-simple-topic-dump-3cols.tsv
-  convert ../../data/heldout_relations/trainNegative/ ../../data/filtered-freebase-simple-topic-dump-3cols.tsv
-  convert ../../data/heldout_relations/testPositive/ ../../data/filtered-freebase-simple-topic-dump-3cols.tsv
-  convert ../../data/heldout_relations/testNegative/ ../../data/filtered-freebase-simple-topic-dump-3cols.tsv
+  convert ../../data/heldout_relations/trainPositive.pb ../../data/filtered-freebase-simple-topic-dump-3cols.tsv
+  convert ../../data/heldout_relations/trainNegative.pb ../../data/filtered-freebase-simple-topic-dump-3cols.tsv
+  convert ../../data/heldout_relations/testPositive.pb ../../data/filtered-freebase-simple-topic-dump-3cols.tsv
+  convert ../../data/heldout_relations/testNegative.pb ../../data/filtered-freebase-simple-topic-dump-3cols.tsv
 fi
 
